@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mdprint",
+  "version": "1.0.0",
+  "description": "A browser-workflow skill for preparing Markdown and exporting PDFs with mdprint.app. No MCP server or conversion API.",
+  "author": {
+    "name": "Fokuus BV",
+    "url": "https://fokuus.be/"
+  },
+  "homepage": "https://mdprint.app/",
+  "repository": "https://github.com/Fokuus/ai-agent-templates",
+  "license": "MIT",
+  "keywords": [
+    "mdprint",
+    "markdown",
+    "pdf",
+    "skills"
+  ]
+}
