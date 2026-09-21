@@ -1,18 +1,49 @@
 {
   "name": "@fokuus/mdprint-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Read-only mdprint documentation and example client. Does not convert documents.",
   "type": "module",
-  "engines": { "node": ">=20" },
-  "exports": { ".": { "types": "./index.d.ts", "import": "./client.mjs" } },
-  "bin": { "mdprint-docs": "./cli.mjs" },
-  "files": ["client.mjs", "cli.mjs", "index.d.ts", "README.md", "LICENSE"],
-  "scripts": { "test": "node --test test/*.test.mjs" },
-  "repository": { "type": "git", "url": "git+https://github.com/Fokuus/ai-agent-templates.git", "directory": "integrations/mdprint-client" },
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./client.mjs"
+    }
+  },
+  "bin": {
+    "mdprint-docs": "./cli.mjs"
+  },
+  "files": [
+    "client.mjs",
+    "cli.mjs",
+    "index.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fokuus/ai-agent-templates.git",
+    "directory": "integrations/mdprint-client"
+  },
   "homepage": "https://mdprint.app/developers/",
-  "bugs": { "url": "https://github.com/Fokuus/ai-agent-templates/issues" },
+  "bugs": {
+    "url": "https://github.com/Fokuus/ai-agent-templates/issues"
+  },
   "license": "MIT",
   "author": "Fokuus BV",
-  "keywords": ["mdprint", "markdown", "documentation", "mcp", "examples"],
-  "publishConfig": { "access": "public" }
+  "keywords": [
+    "mdprint",
+    "markdown",
+    "documentation",
+    "mcp",
+    "examples"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }

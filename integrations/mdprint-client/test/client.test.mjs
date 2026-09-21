@@ -59,3 +59,19 @@ test('CLI emits JSON and meaningful exit codes, refusing conversion/unknown argu
   assert.equal(await run(['info'], { ...io, fetch: async () => new Response('', { status: 429 }) }), 1);
   assert.match(err, /HTTP 429/);
 });
+
+
+test('installed CLI symlink runs and prints help', async () => {
+  const {mkdtemp,symlink,rm}=await import('node:fs/promises');
+  const {tmpdir}=await import('node:os');
+  const {join}=await import('node:path');
+  const {fileURLToPath}=await import('node:url');
+  const {execFileSync}=await import('node:child_process');
+  const dir=await mkdtemp(join(tmpdir(),'mdprint-bin-test-'));
+  try{
+    const bin=join(dir,'mdprint-docs');
+    await symlink(fileURLToPath(new URL('../cli.mjs',import.meta.url)),bin);
+    const output=execFileSync(process.execPath,[bin,'--help'],{encoding:'utf8'});
+    assert.match(output,/Usage: mdprint-docs/);
+  }finally{await rm(dir,{recursive:true,force:true});}
+});

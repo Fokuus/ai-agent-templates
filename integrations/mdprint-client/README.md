@@ -5,7 +5,7 @@ A small JavaScript SDK and command-line client for mdprint's **public, read-only
 Node.js 20 or newer is required. No API key, account or runtime dependency is needed. Install the official archive directly (npm registry publication is not required):
 
 ```sh
-npm install https://mdprint.app/developers/downloads/fokuus-mdprint-client-0.1.0.tgz
+npm install https://mdprint.app/developers/downloads/fokuus-mdprint-client-0.1.1.tgz
 npx mdprint-docs info
 ```
 
