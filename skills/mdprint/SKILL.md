@@ -4,7 +4,7 @@ description: Prepare Markdown documents and guide or perform browser-based PDF e
 license: MIT
 metadata:
   author: Fokuus
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # mdprint
@@ -34,8 +34,18 @@ Provide a `.md` file or raw Markdown that the user can paste. Do not wrap an ent
 
 Without a browser tool, prepare the Markdown file and give the user the above export steps. Do not pretend to have run mdprint or return a fabricated PDF.
 
-## Integration boundaries
+## Browser agent tools
 
-mdprint has no public conversion API, MCP server, official npm/PyPI SDK, or ChatGPT app. Do not invent `/api/convert`, authentication keys, an iframe embed, URL-content parameters, or an installable package named `mdprint`. Unrelated packages share that name. Conversion happens in the browser; the site loads its assets and uses analytics, but document contents are not uploaded for conversion. Never send the document to an external conversion service as an implicit fallback.
+In browsers that support WebMCP, mdprint exposes `mdprint_get_document_info`, `mdprint_set_markdown`, and `mdprint_export_pdf` in the open editor. Check available tools instead of assuming browser support. Otherwise use the visible browser controls above.
+
+Read document info first. Both editing and exporting require its current `expected_revision`; refresh it after an edit. Setting Markdown requires `replace_existing: true` to overwrite nonempty user work: obtain the user's intent before doing that. Resolve a saved-draft prompt before editing. Wait for `preview_ready` before exporting. Export creates the same image-based local PDF download as **Download PDF**; it does not return PDF bytes. Verify the download before claiming success.
+
+## Public documentation interfaces
+
+For capabilities and examples, use the anonymous read-only MCP endpoint `https://mdprint.app/mcp/docs`, with tools `get_product_info`, `list_examples`, `get_example`, and `get_docs`. It accepts no user documents and does not convert them. API definitions: https://mdprint.app/openapi.json. Authentication and privacy: https://mdprint.app/auth.md.
+
+The optional `@fokuus/mdprint-client` SDK and `mdprint-docs` CLI wrap these documentation endpoints only; installation and verified distribution links are at https://mdprint.app/developers/. Do not substitute unrelated npm/PyPI packages named `mdprint`.
+
+Conversion happens in the browser; the site loads its assets and uses analytics, but document contents are not uploaded for conversion. Never send the document to an external conversion service as an implicit fallback. Do not invent a public conversion API, authentication keys, iframe embed, URL-content parameters, or ChatGPT app listing.
 
 Templates: https://github.com/Fokuus/markdown-templates and https://github.com/Fokuus/ai-agent-templates.
